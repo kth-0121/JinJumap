@@ -119,7 +119,7 @@ export default function Home() {
 
   return (
     <div className="relative flex-1">
-      <div className="fixed inset-x-0 bottom-0 top-[61px] -z-10">
+      <div className="fixed inset-x-0 bottom-0 top-[61px]">
         <MapView places={filteredPlaces} />
       </div>
       <MapBottomSheet>{listContent}</MapBottomSheet>
