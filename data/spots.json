@@ -199,17 +199,17 @@
     "rating": 4.2
   },
   {
-    "id": "hanji-experience",
-    "name": "진주 한지체험관",
+    "id": "silk-museum-experience",
+    "name": "진주실크박물관 실크문화Lab",
     "category": "체험",
-    "lat": 35.1889,
-    "lng": 128.0838,
-    "address": "경상남도 진주시 성지길",
-    "description": "전통 한지를 직접 만들어보는 체험 프로그램을 운영한다.",
-    "image": "/images/hanji-experience.jpg",
-    "tags": ["전통공예", "체험"],
-    "openHours": "10:00 ~ 17:00",
-    "rating": 4.1
+    "lat": 35.1598,
+    "lng": 128.165,
+    "address": "경상남도 진주시 문산읍 월아산로 994",
+    "description": "진주 실크 100년의 역사를 소개하는 박물관으로, 실크 공예를 직접 체험해볼 수 있는 실크문화Lab 프로그램을 운영한다.",
+    "image": "/images/silk-museum.jpg",
+    "tags": ["실크", "전통공예", "체험"],
+    "openHours": "10:00 ~ 18:00 (월요일 휴관)",
+    "rating": 4.3
   },
   {
     "id": "craft-workshop",
