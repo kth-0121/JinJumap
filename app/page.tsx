@@ -6,9 +6,9 @@ import { CategoryFilterBar } from "@/components/map/CategoryFilterBar";
 import { MapBottomSheet } from "@/components/map/MapBottomSheet";
 import { ItemCard } from "@/components/cards/ItemCard";
 import { DiscoveryShelf } from "@/components/home/DiscoveryShelf";
+import { ResizableSplit } from "@/components/home/ResizableSplit";
 import { SearchBar } from "@/components/search/SearchBar";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CATEGORY_META } from "@/lib/constants";
 import { getAllPlaces, getHiddenPlaces, getPlacesByCategory } from "@/lib/data";
 import { t } from "@/lib/i18n";
 import { placeHref } from "@/lib/links";
@@ -22,7 +22,6 @@ const MapView = dynamic(
 );
 
 const places = getAllPlaces();
-const CATEGORY_COUNT = Object.keys(CATEGORY_META).length;
 
 const topAttractions = [...getPlacesByCategory("관광지")]
   .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
@@ -40,14 +39,16 @@ export default function Home() {
 
   const q = query.trim().toLowerCase();
   const filteredPlaces = places.filter((p) => {
-    if (!activeCategories.includes(p.category)) return false;
+    if (activeCategories.length > 0 && !activeCategories.includes(p.category)) {
+      return false;
+    }
     if (!q) return true;
     return [p.name, p.nameEn, p.address, ...(p.tags ?? [])]
       .filter(Boolean)
       .some((field) => field!.toLowerCase().includes(q));
   });
 
-  const showShelves = q === "" && activeCategories.length === CATEGORY_COUNT;
+  const showShelves = q === "" && activeCategories.length === 0;
 
   const listContent = (
     <div className="space-y-8">
@@ -99,13 +100,19 @@ export default function Home() {
 
   if (isDesktop) {
     return (
-      <main className="grid flex-1 grid-cols-2">
-        <div className="max-h-[calc(100vh-61px)] overflow-y-auto px-8 py-8">
-          {listContent}
-        </div>
-        <div className="sticky top-[61px] h-[calc(100vh-61px)] overflow-hidden">
-          <MapView places={filteredPlaces} />
-        </div>
+      <main className="flex-1">
+        <ResizableSplit
+          left={
+            <div className="h-[calc(100vh-61px)] overflow-y-auto px-8 py-8">
+              {listContent}
+            </div>
+          }
+          right={
+            <div className="h-[calc(100vh-61px)] overflow-hidden">
+              <MapView places={filteredPlaces} />
+            </div>
+          }
+        />
       </main>
     );
   }
