@@ -3,35 +3,34 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { CATEGORY_META } from "@/lib/constants";
-import type { CategoryId } from "@/lib/types";
+import { t } from "@/lib/i18n";
+import type { Place } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useLocaleStore } from "@/store/useLocaleStore";
 import { CategoryBadge } from "./CategoryBadge";
 import { FavoriteButton } from "./FavoriteButton";
 
 export interface ItemCardProps {
+  place: Place;
   href?: string;
   onClick?: () => void;
   selected?: boolean;
-  favoriteId?: string;
-  name: string;
-  category: CategoryId;
-  description?: string;
-  rating?: number;
   className?: string;
 }
 
 export function ItemCard({
+  place,
   href,
   onClick,
   selected,
-  favoriteId,
-  name,
-  category,
-  description,
-  rating,
   className,
 }: ItemCardProps) {
-  const meta = CATEGORY_META[category];
+  const locale = useLocaleStore((s) => s.locale);
+  const meta = CATEGORY_META[place.category];
+  const name = t(locale, place.name, place.nameEn ?? place.name);
+  const description = place.description
+    ? t(locale, place.description, place.descriptionEn ?? place.description)
+    : undefined;
 
   const content = (
     <motion.div
@@ -51,20 +50,20 @@ export function ItemCard({
         style={{ backgroundColor: `${meta.color}1a` }}
       >
         <span aria-hidden>{meta.icon}</span>
-        {favoriteId && (
-          <FavoriteButton id={favoriteId} className="absolute right-2 top-2" />
+        {!onClick && (
+          <FavoriteButton id={place.id} className="absolute right-2 top-2" />
         )}
       </div>
       <div className="space-y-2 p-4">
         <div className="flex items-center justify-between gap-2">
           <h3 className="truncate font-semibold">{name}</h3>
-          {rating != null && (
+          {place.rating != null && (
             <span className="shrink-0 text-sm text-muted-foreground">
-              ★ {rating.toFixed(1)}
+              ★ {place.rating.toFixed(1)}
             </span>
           )}
         </div>
-        <CategoryBadge category={category} />
+        <CategoryBadge category={place.category} />
         {description && (
           <p className="line-clamp-2 text-sm text-muted-foreground">
             {description}

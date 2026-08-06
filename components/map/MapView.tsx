@@ -8,7 +8,9 @@ import {
   JINJU_CENTER,
   JINJU_MIN_ZOOM,
 } from "@/lib/constants";
+import { t } from "@/lib/i18n";
 import type { Place, RouteResult } from "@/lib/types";
+import { useLocaleStore } from "@/store/useLocaleStore";
 
 function createPlaceIcon(place: Place) {
   const meta = CATEGORY_META[place.category];
@@ -53,6 +55,8 @@ export function MapView({
   route?: RouteResult;
   className?: string;
 }) {
+  const locale = useLocaleStore((s) => s.locale);
+
   return (
     <MapContainer
       center={[JINJU_CENTER.lat, JINJU_CENTER.lng]}
@@ -83,10 +87,14 @@ export function MapView({
               <Popup>
                 <div className="space-y-1">
                   <p className="font-semibold">
-                    {index + 1}. {place.name}
+                    {index + 1}. {t(locale, place.name, place.nameEn ?? place.name)}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    {CATEGORY_META[place.category].label}
+                    {t(
+                      locale,
+                      CATEGORY_META[place.category].label,
+                      CATEGORY_META[place.category].labelEn,
+                    )}
                   </p>
                 </div>
               </Popup>
@@ -104,12 +112,24 @@ export function MapView({
           >
             <Popup>
               <div className="space-y-1">
-                <p className="font-semibold">{place.name}</p>
+                <p className="font-semibold">
+                  {t(locale, place.name, place.nameEn ?? place.name)}
+                </p>
                 <p className="text-xs text-muted-foreground">
-                  {CATEGORY_META[place.category].label}
+                  {t(
+                    locale,
+                    CATEGORY_META[place.category].label,
+                    CATEGORY_META[place.category].labelEn,
+                  )}
                 </p>
                 {place.description && (
-                  <p className="text-xs">{place.description}</p>
+                  <p className="text-xs">
+                    {t(
+                      locale,
+                      place.description,
+                      place.descriptionEn ?? place.description,
+                    )}
+                  </p>
                 )}
               </div>
             </Popup>

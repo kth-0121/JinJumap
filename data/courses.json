@@ -2,8 +2,10 @@
   {
     "id": "half-day-classic",
     "title": "진주성 반나절 코스",
+    "titleEn": "Jinjuseong Half-day Course",
     "theme": "반나절",
     "description": "진주성을 중심으로 역사와 냉면을 함께 즐기는 짧은 코스.",
+    "descriptionEn": "A short course centered on Jinjuseong Fortress, pairing history with a bowl of naengmyeon.",
     "image": "/images/course-half-day.jpg",
     "difficulty": "쉬움",
     "placeIds": ["jinjuseong", "chokseongnu", "jinju-museum", "hayeonok"]
@@ -11,8 +13,10 @@
   {
     "id": "full-day-explorer",
     "title": "진주 하루 완전정복",
+    "titleEn": "Jinju in a Day",
     "theme": "하루",
     "description": "진주성부터 시장, 로데오거리까지 하루 동안 진주를 둘러보는 코스.",
+    "descriptionEn": "A full-day course covering Jinjuseong Fortress, the market, and Rodeo Street.",
     "image": "/images/course-full-day.jpg",
     "difficulty": "보통",
     "placeIds": [
@@ -27,8 +31,10 @@
   {
     "id": "night-view-course",
     "title": "진주 야경 코스",
+    "titleEn": "Jinju Night View Course",
     "theme": "야경",
     "description": "해가 진 뒤 진주성과 남강의 야경을 즐기는 코스.",
+    "descriptionEn": "A course for enjoying the night views of Jinjuseong Fortress and the Namgang River after dark.",
     "image": "/images/course-night.jpg",
     "difficulty": "쉬움",
     "placeIds": ["chokseongnu", "night-view-point", "namgang", "cafe-jinju"]
@@ -36,8 +42,10 @@
   {
     "id": "foodie-course",
     "title": "진주 먹거리 탐방",
+    "titleEn": "Jinju Foodie Trail",
     "theme": "먹거리",
     "description": "진주냉면부터 실비단골목까지, 먹는 즐거움이 가득한 코스.",
+    "descriptionEn": "From Jinju naengmyeon to Silbidan Alley, a course packed with good food.",
     "image": "/images/course-foodie.jpg",
     "difficulty": "쉬움",
     "placeIds": ["hayeonok", "cheonhwang", "silbidan-market", "silbidan-alley-eatery"]
@@ -45,8 +53,10 @@
   {
     "id": "photo-spot-course",
     "title": "사진 명소 코스",
+    "titleEn": "Photo Spots Course",
     "theme": "사진명소",
     "description": "진주에서 가장 사진이 잘 나오는 포인트만 모은 코스.",
+    "descriptionEn": "A course collecting Jinju's most photogenic spots.",
     "image": "/images/course-photo.jpg",
     "difficulty": "쉬움",
     "placeIds": ["night-view-point", "bamboo-forest", "cafe-riverside", "jinjuseong"]

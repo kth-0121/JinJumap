@@ -1,6 +1,10 @@
+"use client";
+
 import { CATEGORY_META } from "@/lib/constants";
+import { t } from "@/lib/i18n";
 import type { CategoryId } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useLocaleStore } from "@/store/useLocaleStore";
 
 export function CategoryBadge({
   category,
@@ -9,6 +13,7 @@ export function CategoryBadge({
   category: CategoryId;
   className?: string;
 }) {
+  const locale = useLocaleStore((s) => s.locale);
   const meta = CATEGORY_META[category];
   return (
     <span
@@ -19,7 +24,7 @@ export function CategoryBadge({
       style={{ backgroundColor: meta.color }}
     >
       <span aria-hidden>{meta.icon}</span>
-      {meta.label}
+      {t(locale, meta.label, meta.labelEn)}
     </span>
   );
 }

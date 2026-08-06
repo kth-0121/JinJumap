@@ -2,13 +2,16 @@
 
 import { motion } from "framer-motion";
 import { CATEGORY_META } from "@/lib/constants";
+import { t } from "@/lib/i18n";
 import type { CategoryId } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useFilterStore } from "@/store/useFilterStore";
+import { useLocaleStore } from "@/store/useLocaleStore";
 
 const CATEGORIES = Object.keys(CATEGORY_META) as CategoryId[];
 
 export function CategoryFilterBar() {
+  const locale = useLocaleStore((s) => s.locale);
   const activeCategories = useFilterStore((s) => s.activeCategories);
   const toggleCategory = useFilterStore((s) => s.toggleCategory);
 
@@ -33,7 +36,7 @@ export function CategoryFilterBar() {
             style={active ? { backgroundColor: meta.color } : undefined}
           >
             <span aria-hidden>{meta.icon}</span>
-            {meta.label}
+            {t(locale, meta.label, meta.labelEn)}
           </motion.button>
         );
       })}

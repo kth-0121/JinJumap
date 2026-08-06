@@ -1,7 +1,9 @@
 "use client";
 
+import { t } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { useFavoritesStore } from "@/store/useFavoritesStore";
+import { useLocaleStore } from "@/store/useLocaleStore";
 
 export function FavoriteButton({
   id,
@@ -10,6 +12,7 @@ export function FavoriteButton({
   id: string;
   className?: string;
 }) {
+  const locale = useLocaleStore((s) => s.locale);
   const isFavorite = useFavoritesStore((s) => s.isFavorite(id));
   const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
 
@@ -17,7 +20,11 @@ export function FavoriteButton({
     <button
       type="button"
       aria-pressed={isFavorite}
-      aria-label={isFavorite ? "즐겨찾기 해제" : "즐겨찾기 추가"}
+      aria-label={
+        isFavorite
+          ? t(locale, "즐겨찾기 해제", "Remove from favorites")
+          : t(locale, "즐겨찾기 추가", "Add to favorites")
+      }
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();

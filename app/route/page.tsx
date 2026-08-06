@@ -7,8 +7,10 @@ import { RouteLegList } from "@/components/detail/RouteLegList";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatDistanceKm, formatMinutes } from "@/lib/format";
 import { getAllPlaces, getPlaceById } from "@/lib/data";
+import { t } from "@/lib/i18n";
 import { buildRecommendedRoute } from "@/lib/route";
 import type { CategoryId } from "@/lib/types";
+import { useLocaleStore } from "@/store/useLocaleStore";
 
 const MapView = dynamic(
   () => import("@/components/map/MapView").then((m) => m.MapView),
@@ -22,6 +24,7 @@ const START_OPTIONS = getAllPlaces().filter(
 const STOPS_PER_ROUTE = 6;
 
 export default function RoutePlannerPage() {
+  const locale = useLocaleStore((s) => s.locale);
   const [startId, setStartId] = useState<string | null>(null);
 
   const route = useMemo(() => {
@@ -40,23 +43,27 @@ export default function RoutePlannerPage() {
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
       <header className="mb-6 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">추천 여행 동선</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          {t(locale, "추천 여행 동선", "Recommended Route")}
+        </h1>
         <p className="text-muted-foreground">
-          시작할 장소를 선택하면 추천 방문 순서, 이동 방법, 예상 시간을
-          알려드려요.
+          {t(
+            locale,
+            "시작할 장소를 선택하면 추천 방문 순서, 이동 방법, 예상 시간을 알려드려요.",
+            "Pick a starting point and we'll suggest a visit order, transport mode, and estimated time.",
+          )}
         </p>
       </header>
 
       <section className="mb-8">
-        <h2 className="mb-3 text-lg font-semibold">1. 시작 장소 선택</h2>
+        <h2 className="mb-3 text-lg font-semibold">
+          {t(locale, "1. 시작 장소 선택", "1. Choose a starting point")}
+        </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {START_OPTIONS.map((place) => (
             <ItemCard
               key={place.id}
-              name={place.name}
-              category={place.category}
-              description={place.description}
-              rating={place.rating}
+              place={place}
               selected={place.id === startId}
               onClick={() => setStartId(place.id)}
             />
@@ -66,15 +73,17 @@ export default function RoutePlannerPage() {
 
       {route && (
         <section>
-          <h2 className="mb-3 text-lg font-semibold">2. 추천 동선</h2>
+          <h2 className="mb-3 text-lg font-semibold">
+            {t(locale, "2. 추천 동선", "2. Recommended route")}
+          </h2>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_1fr]">
             <div className="h-[420px] overflow-hidden rounded-3xl border shadow-sm">
               <MapView route={route} />
             </div>
             <div className="rounded-3xl border bg-card p-5 shadow-sm">
               <p className="mb-4 text-sm text-muted-foreground">
-                총 {formatDistanceKm(route.totalDistanceKm)} ·{" "}
-                {formatMinutes(route.totalMinutes)}
+                {t(locale, "총", "Total")} {formatDistanceKm(route.totalDistanceKm, locale)} ·{" "}
+                {formatMinutes(route.totalMinutes, locale)}
               </p>
               <RouteLegList route={route} />
             </div>

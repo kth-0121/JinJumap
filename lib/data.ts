@@ -76,7 +76,7 @@ export function searchPlaces(query: string): Place[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
   return places.filter((p) =>
-    [p.name, p.address, ...(p.tags ?? [])]
+    [p.name, p.nameEn, p.address, ...(p.tags ?? [])]
       .filter(Boolean)
       .some((field) => field!.toLowerCase().includes(q)),
   );

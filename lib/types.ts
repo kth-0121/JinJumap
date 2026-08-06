@@ -29,19 +29,25 @@ export type CourseTheme =
   | "비오는날"
   | "사진명소";
 
+export type PriceRange = "저가" | "보통" | "고가";
+export type CourseDifficulty = "쉬움" | "보통" | "어려움";
+
 export interface Place {
   id: string;
   name: string;
+  nameEn?: string;
   category: CategoryId;
   lat: number;
   lng: number;
   address?: string;
   description?: string;
+  descriptionEn?: string;
   image?: string;
   tags?: string[];
   openHours?: string;
+  openHoursEn?: string;
   phone?: string;
-  priceRange?: string;
+  priceRange?: PriceRange;
   rating?: number;
   landmark?: boolean;
   hidden?: boolean;
@@ -53,26 +59,32 @@ export interface FestivalScheduleItem {
   date: string;
   time: string;
   program: string;
+  programEn?: string;
 }
 
 export interface Festival {
   id: string;
   placeId: string;
   title: string;
+  titleEn?: string;
   poster: string;
   period: string;
   schedule: FestivalScheduleItem[];
   venue: string;
+  venueEn?: string;
   parkingInfo?: string;
+  parkingInfoEn?: string;
 }
 
 export interface Course {
   id: string;
   title: string;
+  titleEn?: string;
   theme: CourseTheme;
   description?: string;
+  descriptionEn?: string;
   image?: string;
-  difficulty?: "쉬움" | "보통" | "어려움";
+  difficulty?: CourseDifficulty;
   placeIds: string[];
 }
 

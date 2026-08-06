@@ -3,29 +3,70 @@
     "id": "yudeung-festival",
     "placeId": "yudeung-festival-venue",
     "title": "진주남강유등축제",
+    "titleEn": "Jinju Namgang Lantern Festival",
     "poster": "/images/yudeung-festival-poster.jpg",
     "period": "2026-10-01 ~ 2026-10-12",
     "schedule": [
-      { "date": "2026-10-01", "time": "18:00", "program": "개막식 및 유등 점등식" },
-      { "date": "2026-10-03", "time": "19:30", "program": "남강 불꽃놀이" },
-      { "date": "2026-10-08", "time": "14:00", "program": "소망등 만들기 체험" },
-      { "date": "2026-10-12", "time": "20:00", "program": "폐막 공연" }
+      {
+        "date": "2026-10-01",
+        "time": "18:00",
+        "program": "개막식 및 유등 점등식",
+        "programEn": "Opening ceremony and lantern lighting"
+      },
+      {
+        "date": "2026-10-03",
+        "time": "19:30",
+        "program": "남강 불꽃놀이",
+        "programEn": "Namgang River fireworks"
+      },
+      {
+        "date": "2026-10-08",
+        "time": "14:00",
+        "program": "소망등 만들기 체험",
+        "programEn": "Wish-lantern making experience"
+      },
+      {
+        "date": "2026-10-12",
+        "time": "20:00",
+        "program": "폐막 공연",
+        "programEn": "Closing performance"
+      }
     ],
     "venue": "진주성 및 남강 일대",
-    "parkingInfo": "진주성 공영주차장, 중앙시장 공영주차장 이용 (축제 기간 혼잡, 대중교통 권장)"
+    "venueEn": "Jinjuseong Fortress and the Namgang River area",
+    "parkingInfo": "진주성 공영주차장, 중앙시장 공영주차장 이용 (축제 기간 혼잡, 대중교통 권장)",
+    "parkingInfoEn": "Use Jinjuseong or Jungang Market public parking (expect heavy congestion during the festival; public transit recommended)"
   },
   {
     "id": "gaecheon-festival",
     "placeId": "gaecheon-festival-venue",
     "title": "진주개천예술제",
+    "titleEn": "Jinju Gaecheon Art Festival",
     "poster": "/images/gaecheon-festival-poster.jpg",
     "period": "2026-10-03 ~ 2026-10-07",
     "schedule": [
-      { "date": "2026-10-03", "time": "10:00", "program": "개막 퍼레이드" },
-      { "date": "2026-10-05", "time": "15:00", "program": "전통예술 공연" },
-      { "date": "2026-10-07", "time": "18:00", "program": "폐막식" }
+      {
+        "date": "2026-10-03",
+        "time": "10:00",
+        "program": "개막 퍼레이드",
+        "programEn": "Opening parade"
+      },
+      {
+        "date": "2026-10-05",
+        "time": "15:00",
+        "program": "전통예술 공연",
+        "programEn": "Traditional arts performance"
+      },
+      {
+        "date": "2026-10-07",
+        "time": "18:00",
+        "program": "폐막식",
+        "programEn": "Closing ceremony"
+      }
     ],
     "venue": "진주성 일원",
-    "parkingInfo": "진주성 공영주차장 이용"
+    "venueEn": "Jinjuseong Fortress area",
+    "parkingInfo": "진주성 공영주차장 이용",
+    "parkingInfoEn": "Use Jinjuseong public parking"
   }
 ]

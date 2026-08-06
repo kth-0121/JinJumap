@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import { ItemCard } from "@/components/cards/ItemCard";
+import { COURSE_THEME_META } from "@/lib/constants";
 import { getCourseById, getFestivalById, getPlaceById } from "@/lib/data";
+import { t } from "@/lib/i18n";
 import { placeHref } from "@/lib/links";
 import { useFavoritesStore } from "@/store/useFavoritesStore";
+import { useLocaleStore } from "@/store/useLocaleStore";
 
 export default function FavoritesPage() {
+  const locale = useLocaleStore((s) => s.locale);
   const favoriteIds = useFavoritesStore((s) => s.favoriteIds);
 
   const placeCards = favoriteIds
@@ -27,28 +31,30 @@ export default function FavoritesPage() {
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
       <header className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">즐겨찾기</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          {t(locale, "즐겨찾기", "Favorites")}
+        </h1>
         <p className="text-muted-foreground">
-          저장한 장소, 축제, 코스를 모아볼 수 있어요.
+          {t(
+            locale,
+            "저장한 장소, 축제, 코스를 모아볼 수 있어요.",
+            "All the places, festivals, and courses you've saved.",
+          )}
         </p>
       </header>
 
       {isEmpty ? (
         <p className="text-sm text-muted-foreground">
-          아직 즐겨찾기한 항목이 없습니다.
+          {t(
+            locale,
+            "아직 즐겨찾기한 항목이 없습니다.",
+            "You haven't favorited anything yet.",
+          )}
         </p>
       ) : (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {placeCards.map((place) => (
-            <ItemCard
-              key={place.id}
-              href={placeHref(place)}
-              favoriteId={place.id}
-              name={place.name}
-              category={place.category}
-              description={place.description}
-              rating={place.rating}
-            />
+            <ItemCard key={place.id} href={placeHref(place)} place={place} />
           ))}
           {festivalCards.map((festival) => (
             <Link
@@ -60,10 +66,10 @@ export default function FavoritesPage() {
                 🎆
               </div>
               <div className="space-y-1 p-4">
-                <h3 className="font-semibold">{festival.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {festival.period}
-                </p>
+                <h3 className="font-semibold">
+                  {t(locale, festival.title, festival.titleEn ?? festival.title)}
+                </h3>
+                <p className="text-sm text-muted-foreground">{festival.period}</p>
               </div>
             </Link>
           ))}
@@ -77,9 +83,15 @@ export default function FavoritesPage() {
                 🗺️
               </div>
               <div className="space-y-1 p-4">
-                <h3 className="font-semibold">{course.title}</h3>
+                <h3 className="font-semibold">
+                  {t(locale, course.title, course.titleEn ?? course.title)}
+                </h3>
                 <p className="text-sm text-muted-foreground">
-                  {course.theme}
+                  {t(
+                    locale,
+                    COURSE_THEME_META[course.theme].label,
+                    COURSE_THEME_META[course.theme].labelEn,
+                  )}
                 </p>
               </div>
             </Link>

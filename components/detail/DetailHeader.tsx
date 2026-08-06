@@ -1,16 +1,47 @@
+"use client";
+
 import { CategoryBadge } from "@/components/cards/CategoryBadge";
 import { FavoriteButton } from "@/components/cards/FavoriteButton";
-import { CATEGORY_META } from "@/lib/constants";
+import { CATEGORY_META, PRICE_RANGE_META } from "@/lib/constants";
+import { t } from "@/lib/i18n";
 import type { Place } from "@/lib/types";
+import { useLocaleStore } from "@/store/useLocaleStore";
 
 export function DetailHeader({ place }: { place: Place }) {
+  const locale = useLocaleStore((s) => s.locale);
   const meta = CATEGORY_META[place.category];
+  const name = t(locale, place.name, place.nameEn ?? place.name);
+  const description = place.description
+    ? t(locale, place.description, place.descriptionEn ?? place.description)
+    : undefined;
 
   const facts: { label: string; value: string }[] = [
-    ...(place.address ? [{ label: "주소", value: place.address }] : []),
-    ...(place.openHours ? [{ label: "운영시간", value: place.openHours }] : []),
-    ...(place.phone ? [{ label: "전화", value: place.phone }] : []),
-    ...(place.priceRange ? [{ label: "가격대", value: place.priceRange }] : []),
+    ...(place.address
+      ? [{ label: t(locale, "주소", "Address"), value: place.address }]
+      : []),
+    ...(place.openHours
+      ? [
+          {
+            label: t(locale, "운영시간", "Hours"),
+            value: t(locale, place.openHours, place.openHoursEn ?? place.openHours),
+          },
+        ]
+      : []),
+    ...(place.phone
+      ? [{ label: t(locale, "전화", "Phone"), value: place.phone }]
+      : []),
+    ...(place.priceRange
+      ? [
+          {
+            label: t(locale, "가격대", "Price"),
+            value: t(
+              locale,
+              PRICE_RANGE_META[place.priceRange].label,
+              PRICE_RANGE_META[place.priceRange].labelEn,
+            ),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -24,7 +55,7 @@ export function DetailHeader({ place }: { place: Place }) {
       </div>
       <div className="space-y-3 p-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h1 className="text-2xl font-bold tracking-tight">{place.name}</h1>
+          <h1 className="text-2xl font-bold tracking-tight">{name}</h1>
           {place.rating != null && (
             <span className="text-sm text-muted-foreground">
               ★ {place.rating.toFixed(1)}
@@ -32,9 +63,7 @@ export function DetailHeader({ place }: { place: Place }) {
           )}
         </div>
         <CategoryBadge category={place.category} />
-        {place.description && (
-          <p className="text-muted-foreground">{place.description}</p>
-        )}
+        {description && <p className="text-muted-foreground">{description}</p>}
         {facts.length > 0 && (
           <dl className="grid grid-cols-1 gap-2 pt-2 text-sm sm:grid-cols-2">
             {facts.map((fact) => (
