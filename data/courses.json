@@ -1,0 +1,54 @@
+[
+  {
+    "id": "half-day-classic",
+    "title": "진주성 반나절 코스",
+    "theme": "반나절",
+    "description": "진주성을 중심으로 역사와 냉면을 함께 즐기는 짧은 코스.",
+    "image": "/images/course-half-day.jpg",
+    "difficulty": "쉬움",
+    "placeIds": ["jinjuseong", "chokseongnu", "jinju-museum", "hayeonok"]
+  },
+  {
+    "id": "full-day-explorer",
+    "title": "진주 하루 완전정복",
+    "theme": "하루",
+    "description": "진주성부터 시장, 로데오거리까지 하루 동안 진주를 둘러보는 코스.",
+    "image": "/images/course-full-day.jpg",
+    "difficulty": "보통",
+    "placeIds": [
+      "jinjuseong",
+      "jinju-museum",
+      "hayeonok",
+      "jungang-market",
+      "cafe-riverside",
+      "rodeo-street"
+    ]
+  },
+  {
+    "id": "night-view-course",
+    "title": "진주 야경 코스",
+    "theme": "야경",
+    "description": "해가 진 뒤 진주성과 남강의 야경을 즐기는 코스.",
+    "image": "/images/course-night.jpg",
+    "difficulty": "쉬움",
+    "placeIds": ["chokseongnu", "night-view-point", "namgang", "cafe-jinju"]
+  },
+  {
+    "id": "foodie-course",
+    "title": "진주 먹거리 탐방",
+    "theme": "먹거리",
+    "description": "진주냉면부터 실비단골목까지, 먹는 즐거움이 가득한 코스.",
+    "image": "/images/course-foodie.jpg",
+    "difficulty": "쉬움",
+    "placeIds": ["hayeonok", "cheonhwang", "silbidan-market", "silbidan-alley-eatery"]
+  },
+  {
+    "id": "photo-spot-course",
+    "title": "사진 명소 코스",
+    "theme": "사진명소",
+    "description": "진주에서 가장 사진이 잘 나오는 포인트만 모은 코스.",
+    "image": "/images/course-photo.jpg",
+    "difficulty": "쉬움",
+    "placeIds": ["night-view-point", "bamboo-forest", "cafe-riverside", "jinjuseong"]
+  }
+]

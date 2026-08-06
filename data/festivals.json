@@ -1,0 +1,31 @@
+[
+  {
+    "id": "yudeung-festival",
+    "placeId": "yudeung-festival-venue",
+    "title": "진주남강유등축제",
+    "poster": "/images/yudeung-festival-poster.jpg",
+    "period": "2026-10-01 ~ 2026-10-12",
+    "schedule": [
+      { "date": "2026-10-01", "time": "18:00", "program": "개막식 및 유등 점등식" },
+      { "date": "2026-10-03", "time": "19:30", "program": "남강 불꽃놀이" },
+      { "date": "2026-10-08", "time": "14:00", "program": "소망등 만들기 체험" },
+      { "date": "2026-10-12", "time": "20:00", "program": "폐막 공연" }
+    ],
+    "venue": "진주성 및 남강 일대",
+    "parkingInfo": "진주성 공영주차장, 중앙시장 공영주차장 이용 (축제 기간 혼잡, 대중교통 권장)"
+  },
+  {
+    "id": "gaecheon-festival",
+    "placeId": "gaecheon-festival-venue",
+    "title": "진주개천예술제",
+    "poster": "/images/gaecheon-festival-poster.jpg",
+    "period": "2026-10-03 ~ 2026-10-07",
+    "schedule": [
+      { "date": "2026-10-03", "time": "10:00", "program": "개막 퍼레이드" },
+      { "date": "2026-10-05", "time": "15:00", "program": "전통예술 공연" },
+      { "date": "2026-10-07", "time": "18:00", "program": "폐막식" }
+    ],
+    "venue": "진주성 일원",
+    "parkingInfo": "진주성 공영주차장 이용"
+  }
+]
