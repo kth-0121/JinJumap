@@ -3,13 +3,16 @@
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { ItemCard } from "@/components/cards/ItemCard";
+import { MapBottomSheet } from "@/components/map/MapBottomSheet";
 import { RouteLegList } from "@/components/detail/RouteLegList";
+import { ResizableSplit } from "@/components/home/ResizableSplit";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatDistanceKm, formatMinutes } from "@/lib/format";
 import { getAllPlaces, getPlaceById } from "@/lib/data";
 import { t } from "@/lib/i18n";
 import { buildRecommendedRoute } from "@/lib/route";
 import type { CategoryId } from "@/lib/types";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
 import { useLocaleStore } from "@/store/useLocaleStore";
 
 const MapView = dynamic(
@@ -25,6 +28,7 @@ const STOPS_PER_ROUTE = 6;
 
 export default function RoutePlannerPage() {
   const locale = useLocaleStore((s) => s.locale);
+  const isDesktop = useIsDesktop();
   const [startId, setStartId] = useState<string | null>(null);
 
   const route = useMemo(() => {
@@ -40,26 +44,26 @@ export default function RoutePlannerPage() {
     return buildRecommendedRoute(start, [start, ...topPicks]);
   }, [startId]);
 
-  return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
-      <header className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+  const listContent = (
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
           {t(locale, "추천 여행 동선", "Recommended Route")}
         </h1>
-        <p className="text-muted-foreground">
+        <p className="mt-1 text-sm text-muted-foreground sm:text-base">
           {t(
             locale,
             "시작할 장소를 선택하면 추천 방문 순서, 이동 방법, 예상 시간을 알려드려요.",
             "Pick a starting point and we'll suggest a visit order, transport mode, and estimated time.",
           )}
         </p>
-      </header>
+      </div>
 
-      <section className="mb-10">
+      <section>
         <h2 className="mb-4 text-lg font-semibold">
           {t(locale, "1. 시작 장소 선택", "1. Choose a starting point")}
         </h2>
-        <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3">
           {START_OPTIONS.map((place) => (
             <ItemCard
               key={place.id}
@@ -76,20 +80,43 @@ export default function RoutePlannerPage() {
           <h2 className="mb-4 text-lg font-semibold">
             {t(locale, "2. 추천 동선", "2. Recommended route")}
           </h2>
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_1fr]">
-            <div className="h-[420px] overflow-hidden rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
-              <MapView route={route} />
-            </div>
-            <div className="rounded-3xl bg-secondary/40 p-5">
-              <p className="mb-4 text-sm text-muted-foreground">
-                {t(locale, "총", "Total")} {formatDistanceKm(route.totalDistanceKm, locale)} ·{" "}
-                {formatMinutes(route.totalMinutes, locale)}
-              </p>
-              <RouteLegList route={route} />
-            </div>
+          <div className="rounded-3xl bg-secondary/40 p-5">
+            <p className="mb-4 text-sm text-muted-foreground">
+              {t(locale, "총", "Total")} {formatDistanceKm(route.totalDistanceKm, locale)} ·{" "}
+              {formatMinutes(route.totalMinutes, locale)}
+            </p>
+            <RouteLegList route={route} />
           </div>
         </section>
       )}
-    </main>
+    </div>
+  );
+
+  if (isDesktop) {
+    return (
+      <main className="flex-1">
+        <ResizableSplit
+          left={
+            <div className="h-[calc(100vh-61px)] overflow-y-auto px-8 py-8">
+              {listContent}
+            </div>
+          }
+          right={
+            <div className="h-[calc(100vh-61px)] overflow-hidden">
+              {route ? <MapView route={route} /> : <MapView places={START_OPTIONS} />}
+            </div>
+          }
+        />
+      </main>
+    );
+  }
+
+  return (
+    <div className="relative flex-1">
+      <div className="fixed inset-x-0 bottom-0 top-[61px] -z-10">
+        {route ? <MapView route={route} /> : <MapView places={START_OPTIONS} />}
+      </div>
+      <MapBottomSheet>{listContent}</MapBottomSheet>
+    </div>
   );
 }
