@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { FavoriteButton } from "@/components/cards/FavoriteButton";
-import { getAllFestivals, getPlaceById } from "@/lib/data";
+import { FestivalCard } from "@/components/cards/FestivalCard";
+import { getAllFestivals } from "@/lib/data";
 import { t } from "@/lib/i18n";
 import { useLocaleStore } from "@/store/useLocaleStore";
 
@@ -12,9 +11,9 @@ export default function FestivalsPage() {
   const locale = useLocaleStore((s) => s.locale);
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
-      <header className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
+      <header className="mb-10 space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           {t(locale, "축제", "Festivals")}
         </h1>
         <p className="text-muted-foreground">
@@ -26,34 +25,10 @@ export default function FestivalsPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {festivals.map((festival) => {
-          const venuePlace = getPlaceById(festival.placeId);
-          const title = t(locale, festival.title, festival.titleEn ?? festival.title);
-          const venueName = venuePlace
-            ? t(locale, venuePlace.name, venuePlace.nameEn ?? venuePlace.name)
-            : t(locale, festival.venue, festival.venueEn ?? festival.venue);
-          return (
-            <Link
-              key={festival.id}
-              href={`/festivals/${festival.id}`}
-              className="overflow-hidden rounded-3xl border bg-card shadow-sm transition-shadow hover:shadow-lg"
-            >
-              <div className="relative flex h-32 items-center justify-center bg-violet-100 text-4xl">
-                🎆
-                <FavoriteButton
-                  id={festival.id}
-                  className="absolute right-2 top-2"
-                />
-              </div>
-              <div className="space-y-1.5 p-4">
-                <h3 className="font-semibold">{title}</h3>
-                <p className="text-sm text-muted-foreground">{festival.period}</p>
-                <p className="text-sm text-muted-foreground">{venueName}</p>
-              </div>
-            </Link>
-          );
-        })}
+      <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+        {festivals.map((festival) => (
+          <FestivalCard key={festival.id} festival={festival} />
+        ))}
       </div>
     </main>
   );

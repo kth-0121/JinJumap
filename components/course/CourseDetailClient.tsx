@@ -30,8 +30,8 @@ export function CourseDetailClient({
     : undefined;
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
-      <header className="mb-6 space-y-2">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
+      <header className="mb-8 space-y-2">
         <span className="inline-flex rounded-full bg-secondary px-2.5 py-1 text-xs font-medium">
           {t(
             locale,
@@ -39,7 +39,7 @@ export function CourseDetailClient({
             COURSE_THEME_META[course.theme].labelEn,
           )}
         </span>
-        <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
         {description && <p className="text-muted-foreground">{description}</p>}
         <p className="text-sm text-muted-foreground">
           {t(locale, "총", "Total")} {formatDistanceKm(route.totalDistanceKm, locale)} ·{" "}
@@ -54,10 +54,10 @@ export function CourseDetailClient({
       </header>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_1fr]">
-        <div className="h-[420px] overflow-hidden rounded-3xl border shadow-sm">
+        <div className="h-[420px] overflow-hidden rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
           <MapView route={route} />
         </div>
-        <div className="rounded-3xl border bg-card p-5 shadow-sm">
+        <div className="rounded-3xl bg-secondary/40 p-5">
           <RouteLegList route={route} />
         </div>
       </div>

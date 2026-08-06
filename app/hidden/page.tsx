@@ -22,9 +22,9 @@ export default function HiddenJinjuPage() {
   const locale = useLocaleStore((s) => s.locale);
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
-      <header className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
+      <header className="mb-10 space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           {t(locale, "숨은 진주", "Hidden Jinju")}
         </h1>
         <p className="text-muted-foreground">
@@ -43,7 +43,7 @@ export default function HiddenJinjuPage() {
         if (items.length === 0) return null;
 
         return (
-          <section key={category} className="mb-10">
+          <section key={category} className="mb-12">
             <h2 className="mb-4 text-lg font-semibold">
               {t(
                 locale,
@@ -51,7 +51,7 @@ export default function HiddenJinjuPage() {
                 HIDDEN_CATEGORY_META[category].labelEn,
               )}
             </h2>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
               {items.map((place) => (
                 <ItemCard key={place.id} href={placeHref(place)} place={place} />
               ))}

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ItemCard } from "@/components/cards/ItemCard";
-import { Input } from "@/components/ui/input";
+import { SearchBar } from "@/components/search/SearchBar";
 import { searchPlaces } from "@/lib/data";
 import { t } from "@/lib/i18n";
 import { placeHref } from "@/lib/links";
@@ -14,9 +14,9 @@ export default function SearchPage() {
   const results = searchPlaces(query);
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
-      <header className="mb-6 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
+      <header className="mb-8 space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           {t(locale, "검색", "Search")}
         </h1>
         <p className="text-muted-foreground">
@@ -28,15 +28,15 @@ export default function SearchPage() {
         </p>
       </header>
 
-      <Input
+      <SearchBar
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={setQuery}
         placeholder={t(
           locale,
           "예: 진주성, 진주냉면, 야경",
           "e.g. Jinjuseong, naengmyeon, night view",
         )}
-        className="mb-8 h-12 rounded-full px-5"
+        className="mb-10 max-w-xl"
       />
 
       {query.trim() === "" ? (
@@ -52,7 +52,7 @@ export default function SearchPage() {
           )}
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
           {results.map((place) => (
             <ItemCard key={place.id} href={placeHref(place)} place={place} />
           ))}

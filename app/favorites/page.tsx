@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { CourseCard } from "@/components/cards/CourseCard";
+import { FestivalCard } from "@/components/cards/FestivalCard";
 import { ItemCard } from "@/components/cards/ItemCard";
-import { COURSE_THEME_META } from "@/lib/constants";
 import { getCourseById, getFestivalById, getPlaceById } from "@/lib/data";
 import { t } from "@/lib/i18n";
 import { placeHref } from "@/lib/links";
@@ -29,9 +29,9 @@ export default function FavoritesPage() {
     courseCards.length === 0;
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
-      <header className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
+      <header className="mb-10 space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           {t(locale, "즐겨찾기", "Favorites")}
         </h1>
         <p className="text-muted-foreground">
@@ -52,49 +52,15 @@ export default function FavoritesPage() {
           )}
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
           {placeCards.map((place) => (
             <ItemCard key={place.id} href={placeHref(place)} place={place} />
           ))}
           {festivalCards.map((festival) => (
-            <Link
-              key={festival.id}
-              href={`/festivals/${festival.id}`}
-              className="overflow-hidden rounded-3xl border bg-card shadow-sm transition-shadow hover:shadow-lg"
-            >
-              <div className="flex h-32 items-center justify-center bg-violet-100 text-4xl">
-                🎆
-              </div>
-              <div className="space-y-1 p-4">
-                <h3 className="font-semibold">
-                  {t(locale, festival.title, festival.titleEn ?? festival.title)}
-                </h3>
-                <p className="text-sm text-muted-foreground">{festival.period}</p>
-              </div>
-            </Link>
+            <FestivalCard key={festival.id} festival={festival} />
           ))}
           {courseCards.map((course) => (
-            <Link
-              key={course.id}
-              href={`/courses/${course.id}`}
-              className="overflow-hidden rounded-3xl border bg-card shadow-sm transition-shadow hover:shadow-lg"
-            >
-              <div className="flex h-32 items-center justify-center bg-muted text-4xl">
-                🗺️
-              </div>
-              <div className="space-y-1 p-4">
-                <h3 className="font-semibold">
-                  {t(locale, course.title, course.titleEn ?? course.title)}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {t(
-                    locale,
-                    COURSE_THEME_META[course.theme].label,
-                    COURSE_THEME_META[course.theme].labelEn,
-                  )}
-                </p>
-              </div>
-            </Link>
+            <CourseCard key={course.id} course={course} />
           ))}
         </div>
       )}

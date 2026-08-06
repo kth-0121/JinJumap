@@ -45,17 +45,17 @@ export function DetailHeader({ place }: { place: Place }) {
   ];
 
   return (
-    <header className="overflow-hidden rounded-3xl border shadow-sm">
+    <header>
       <div
-        className="relative flex h-56 items-center justify-center text-8xl"
+        className="relative flex h-64 items-center justify-center rounded-3xl text-8xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:h-80"
         style={{ backgroundColor: `${meta.color}1a` }}
       >
         <span aria-hidden>{meta.icon}</span>
         <FavoriteButton id={place.id} className="absolute right-4 top-4" />
       </div>
-      <div className="space-y-3 p-6">
+      <div className="space-y-4 pt-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h1 className="text-2xl font-bold tracking-tight">{name}</h1>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{name}</h1>
           {place.rating != null && (
             <span className="text-sm text-muted-foreground">
               ★ {place.rating.toFixed(1)}
@@ -63,9 +63,11 @@ export function DetailHeader({ place }: { place: Place }) {
           )}
         </div>
         <CategoryBadge category={place.category} />
-        {description && <p className="text-muted-foreground">{description}</p>}
+        {description && (
+          <p className="max-w-2xl text-muted-foreground">{description}</p>
+        )}
         {facts.length > 0 && (
-          <dl className="grid grid-cols-1 gap-2 pt-2 text-sm sm:grid-cols-2">
+          <dl className="grid grid-cols-1 gap-3 border-t border-border pt-4 text-sm sm:grid-cols-2">
             {facts.map((fact) => (
               <div key={fact.label}>
                 <dt className="text-muted-foreground">{fact.label}</dt>

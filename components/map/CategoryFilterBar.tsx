@@ -16,7 +16,7 @@ export function CategoryFilterBar() {
   const toggleCategory = useFilterStore((s) => s.toggleCategory);
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="no-scrollbar flex gap-6 overflow-x-auto border-b border-border">
       {CATEGORIES.map((category) => {
         const meta = CATEGORY_META[category];
         const active = activeCategories.includes(category);
@@ -28,14 +28,18 @@ export function CategoryFilterBar() {
             onClick={() => toggleCategory(category)}
             aria-pressed={active}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium transition-colors",
+              "flex shrink-0 flex-col items-center gap-2 border-b-2 px-0.5 pb-3 pt-1 text-xs font-medium whitespace-nowrap transition-colors",
               active
-                ? "border-transparent text-white shadow-sm"
-                : "border-border bg-background text-muted-foreground hover:bg-muted",
+                ? "border-foreground text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground",
             )}
-            style={active ? { backgroundColor: meta.color } : undefined}
           >
-            <span aria-hidden>{meta.icon}</span>
+            <span
+              aria-hidden
+              className={cn("text-2xl transition-opacity", !active && "opacity-50")}
+            >
+              {meta.icon}
+            </span>
             {t(locale, meta.label, meta.labelEn)}
           </motion.button>
         );

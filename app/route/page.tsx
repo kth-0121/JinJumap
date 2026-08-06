@@ -41,9 +41,9 @@ export default function RoutePlannerPage() {
   }, [startId]);
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
-      <header className="mb-6 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">
+    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
+      <header className="mb-8 space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           {t(locale, "추천 여행 동선", "Recommended Route")}
         </h1>
         <p className="text-muted-foreground">
@@ -55,11 +55,11 @@ export default function RoutePlannerPage() {
         </p>
       </header>
 
-      <section className="mb-8">
-        <h2 className="mb-3 text-lg font-semibold">
+      <section className="mb-10">
+        <h2 className="mb-4 text-lg font-semibold">
           {t(locale, "1. 시작 장소 선택", "1. Choose a starting point")}
         </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
           {START_OPTIONS.map((place) => (
             <ItemCard
               key={place.id}
@@ -73,14 +73,14 @@ export default function RoutePlannerPage() {
 
       {route && (
         <section>
-          <h2 className="mb-3 text-lg font-semibold">
+          <h2 className="mb-4 text-lg font-semibold">
             {t(locale, "2. 추천 동선", "2. Recommended route")}
           </h2>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_1fr]">
-            <div className="h-[420px] overflow-hidden rounded-3xl border shadow-sm">
+            <div className="h-[420px] overflow-hidden rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
               <MapView route={route} />
             </div>
-            <div className="rounded-3xl border bg-card p-5 shadow-sm">
+            <div className="rounded-3xl bg-secondary/40 p-5">
               <p className="mb-4 text-sm text-muted-foreground">
                 {t(locale, "총", "Total")} {formatDistanceKm(route.totalDistanceKm, locale)} ·{" "}
                 {formatMinutes(route.totalMinutes, locale)}

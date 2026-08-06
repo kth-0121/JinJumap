@@ -19,12 +19,12 @@ export function SpotDetailClient({
   const locale = useLocaleStore((s) => s.locale);
 
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
+    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10 sm:py-14">
       <DetailHeader place={place} />
 
       {courses.length > 0 && (
-        <section className="mt-8">
-          <h2 className="mb-3 text-lg font-semibold">
+        <section className="mt-10">
+          <h2 className="mb-4 text-lg font-semibold">
             {t(locale, "이 코스에 포함됨", "Featured in these courses")}
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -41,8 +41,8 @@ export function SpotDetailClient({
         </section>
       )}
 
-      <section className="mt-10">
-        <h2 className="mb-3 text-lg font-semibold">
+      <section className="mt-12">
+        <h2 className="mb-4 text-lg font-semibold">
           {t(locale, "주변 추천", "Nearby Recommendations")}
         </h2>
         <NearbyList places={nearby} />

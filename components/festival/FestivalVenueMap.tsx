@@ -11,7 +11,7 @@ const MapView = dynamic(
 
 export function FestivalVenueMap({ places }: { places: Place[] }) {
   return (
-    <div className="h-[320px] overflow-hidden rounded-3xl border shadow-sm">
+    <div className="h-[320px] overflow-hidden rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
       <MapView places={places} />
     </div>
   );

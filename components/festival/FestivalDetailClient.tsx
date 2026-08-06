@@ -21,15 +21,15 @@ export function FestivalDetailClient({
   const venueName = t(locale, festival.venue, festival.venueEn ?? festival.venue);
 
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
-      <header className="overflow-hidden rounded-3xl border shadow-sm">
-        <div className="relative flex h-56 items-center justify-center bg-violet-100 text-8xl">
+    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10 sm:py-14">
+      <header>
+        <div className="relative flex h-64 items-center justify-center rounded-3xl bg-violet-100 text-8xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:h-80">
           🎆
           <FavoriteButton id={festival.id} className="absolute right-4 top-4" />
         </div>
-        <div className="space-y-3 p-6">
-          <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
-          <dl className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
+        <div className="space-y-4 pt-6">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
+          <dl className="grid grid-cols-1 gap-3 border-t border-border pt-4 text-sm sm:grid-cols-2">
             <div>
               <dt className="text-muted-foreground">
                 {t(locale, "기간", "Dates")}
@@ -60,15 +60,15 @@ export function FestivalDetailClient({
         </div>
       </header>
 
-      <section className="mt-8">
-        <h2 className="mb-3 text-lg font-semibold">
+      <section className="mt-12">
+        <h2 className="mb-4 text-lg font-semibold">
           {t(locale, "프로그램 일정", "Program Schedule")}
         </h2>
         <ol className="space-y-3">
           {festival.schedule.map((item, index) => (
             <li
               key={`${item.date}-${item.time}-${index}`}
-              className="flex flex-wrap gap-3 rounded-2xl border p-3 text-sm"
+              className="flex flex-wrap gap-3 rounded-2xl bg-secondary/60 p-4 text-sm"
             >
               <span className="shrink-0 font-medium">
                 {item.date} {item.time}
@@ -82,8 +82,8 @@ export function FestivalDetailClient({
       </section>
 
       {venuePlace && (
-        <section className="mt-8">
-          <h2 className="mb-3 text-lg font-semibold">
+        <section className="mt-12">
+          <h2 className="mb-4 text-lg font-semibold">
             {t(locale, "행사장 위치", "Venue Location")}
           </h2>
           <FestivalVenueMap places={[venuePlace]} />
@@ -91,8 +91,8 @@ export function FestivalDetailClient({
       )}
 
       {nearby.length > 0 && (
-        <section className="mt-8">
-          <h2 className="mb-3 text-lg font-semibold">
+        <section className="mt-12">
+          <h2 className="mb-4 text-lg font-semibold">
             {t(locale, "주변 추천", "Nearby Recommendations")}
           </h2>
           <NearbyList places={nearby} />
