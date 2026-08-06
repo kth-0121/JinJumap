@@ -20,7 +20,7 @@ export function Header() {
 
   return (
     <header className="border-b bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+      <div className="flex items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="shrink-0 text-lg font-bold tracking-tight">
           {t(locale, "한눈에 보는 진주", "Jinju at a Glance")}
         </Link>

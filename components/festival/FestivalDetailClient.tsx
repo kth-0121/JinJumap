@@ -2,7 +2,7 @@
 
 import { FavoriteButton } from "@/components/cards/FavoriteButton";
 import { NearbyList } from "@/components/detail/NearbyList";
-import { FestivalVenueMap } from "@/components/festival/FestivalVenueMap";
+import { PlaceLocationMap } from "@/components/map/PlaceLocationMap";
 import { t } from "@/lib/i18n";
 import type { Festival, Place } from "@/lib/types";
 import { useLocaleStore } from "@/store/useLocaleStore";
@@ -86,7 +86,7 @@ export function FestivalDetailClient({
           <h2 className="mb-4 text-lg font-semibold">
             {t(locale, "행사장 위치", "Venue Location")}
           </h2>
-          <FestivalVenueMap places={[venuePlace]} />
+          <PlaceLocationMap places={[venuePlace]} />
         </section>
       )}
 

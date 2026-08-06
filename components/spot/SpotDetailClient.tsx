@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { DetailHeader } from "@/components/detail/DetailHeader";
 import { NearbyList } from "@/components/detail/NearbyList";
+import { PlaceLocationMap } from "@/components/map/PlaceLocationMap";
 import { t } from "@/lib/i18n";
 import type { Course, Place } from "@/lib/types";
 import { useLocaleStore } from "@/store/useLocaleStore";
@@ -21,6 +22,13 @@ export function SpotDetailClient({
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10 sm:py-14">
       <DetailHeader place={place} />
+
+      <section className="mt-10">
+        <h2 className="mb-4 text-lg font-semibold">
+          {t(locale, "위치", "Location")}
+        </h2>
+        <PlaceLocationMap places={[place]} />
+      </section>
 
       {courses.length > 0 && (
         <section className="mt-10">

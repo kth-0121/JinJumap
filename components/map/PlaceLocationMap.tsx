@@ -9,7 +9,7 @@ const MapView = dynamic(
   { ssr: false, loading: () => <Skeleton className="h-full w-full" /> },
 );
 
-export function FestivalVenueMap({ places }: { places: Place[] }) {
+export function PlaceLocationMap({ places }: { places: Place[] }) {
   return (
     <div className="h-[320px] overflow-hidden rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
       <MapView places={places} />
