@@ -2,7 +2,12 @@
 
 import L from "leaflet";
 import { MapContainer, Marker, Polyline, Popup, TileLayer } from "react-leaflet";
-import { CATEGORY_META, JINJU_CENTER } from "@/lib/constants";
+import {
+  CATEGORY_META,
+  JINJU_BOUNDS,
+  JINJU_CENTER,
+  JINJU_MIN_ZOOM,
+} from "@/lib/constants";
 import type { Place, RouteResult } from "@/lib/types";
 
 function createPlaceIcon(place: Place) {
@@ -52,6 +57,9 @@ export function MapView({
     <MapContainer
       center={[JINJU_CENTER.lat, JINJU_CENTER.lng]}
       zoom={14}
+      minZoom={JINJU_MIN_ZOOM}
+      maxBounds={JINJU_BOUNDS}
+      maxBoundsViscosity={1.0}
       scrollWheelZoom
       className={className ?? "h-full w-full"}
     >

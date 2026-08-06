@@ -1,6 +1,15 @@
 import type { CategoryId, CourseTheme, TransportMode } from "./types";
 
-export const JINJU_CENTER = { lat: 35.1911, lng: 128.0866 };
+export const JINJU_CENTER = { lat: 35.191, lng: 128.09 };
+
+// Clamps the map to the Jinju downtown/tourist area so users can't pan or
+// zoom out to see the rest of the country.
+export const JINJU_BOUNDS: [[number, number], [number, number]] = [
+  [35.13, 128.0],
+  [35.25, 128.16],
+];
+
+export const JINJU_MIN_ZOOM = 13;
 
 export const CATEGORY_META: Record<
   CategoryId,
