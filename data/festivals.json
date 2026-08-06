@@ -4,7 +4,9 @@
     "placeId": "yudeung-festival-venue",
     "title": "진주남강유등축제",
     "titleEn": "Jinju Namgang Lantern Festival",
-    "poster": "/images/yudeung-festival-poster.jpg",
+    "poster": "/images/yudeung-festival.jpg",
+    "posterCredit": "Asfreeas (CC BY 3.0, Wikimedia Commons)",
+    "posterCreditUrl": "https://commons.wikimedia.org/wiki/File:Jinju_namgang_lantern_festival.jpg",
     "period": "2026-10-01 ~ 2026-10-12",
     "schedule": [
       {
@@ -42,7 +44,6 @@
     "placeId": "gaecheon-festival-venue",
     "title": "진주개천예술제",
     "titleEn": "Jinju Gaecheon Art Festival",
-    "poster": "/images/gaecheon-festival-poster.jpg",
     "period": "2026-10-03 ~ 2026-10-07",
     "schedule": [
       {

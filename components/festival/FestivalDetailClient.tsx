@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FavoriteButton } from "@/components/cards/FavoriteButton";
 import { NearbyList } from "@/components/detail/NearbyList";
 import { PlaceLocationMap } from "@/components/map/PlaceLocationMap";
@@ -23,10 +24,39 @@ export function FestivalDetailClient({
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10 sm:py-14">
       <header>
-        <div className="relative flex h-64 items-center justify-center rounded-3xl bg-violet-100 text-8xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:h-80">
-          🎆
+        <div className="relative flex h-64 items-center justify-center overflow-hidden rounded-3xl bg-violet-100 text-8xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:h-80">
+          {festival.poster ? (
+            <Image
+              src={festival.poster}
+              alt={title}
+              fill
+              sizes="(min-width: 1024px) 800px, 100vw"
+              priority
+              className="object-cover"
+            />
+          ) : (
+            "🎆"
+          )}
           <FavoriteButton id={festival.id} className="absolute right-4 top-4" />
         </div>
+        {festival.poster && festival.posterCredit && (
+          <p className="pt-2 text-xs text-muted-foreground">
+            {festival.posterCreditUrl ? (
+              <a
+                href={festival.posterCreditUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="hover:underline"
+              >
+                {t(locale, "사진", "Photo")}: {festival.posterCredit}
+              </a>
+            ) : (
+              <>
+                {t(locale, "사진", "Photo")}: {festival.posterCredit}
+              </>
+            )}
+          </p>
+        )}
         <div className="space-y-4 pt-6">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
           <dl className="grid grid-cols-1 gap-3 border-t border-border pt-4 text-sm sm:grid-cols-2">

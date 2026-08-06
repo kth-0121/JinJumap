@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { CategoryBadge } from "@/components/cards/CategoryBadge";
 import { FavoriteButton } from "@/components/cards/FavoriteButton";
 import { CATEGORY_META, PRICE_RANGE_META } from "@/lib/constants";
@@ -47,12 +48,41 @@ export function DetailHeader({ place }: { place: Place }) {
   return (
     <header>
       <div
-        className="relative flex h-64 items-center justify-center rounded-3xl text-8xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:h-80"
-        style={{ backgroundColor: `${meta.color}1a` }}
+        className="relative flex h-64 items-center justify-center overflow-hidden rounded-3xl text-8xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:h-80"
+        style={place.image ? undefined : { backgroundColor: `${meta.color}1a` }}
       >
-        <span aria-hidden>{meta.icon}</span>
+        {place.image ? (
+          <Image
+            src={place.image}
+            alt={name}
+            fill
+            sizes="(min-width: 1024px) 800px, 100vw"
+            priority
+            className="object-cover"
+          />
+        ) : (
+          <span aria-hidden>{meta.icon}</span>
+        )}
         <FavoriteButton id={place.id} className="absolute right-4 top-4" />
       </div>
+      {place.image && place.imageCredit && (
+        <p className="pt-2 text-xs text-muted-foreground">
+          {place.imageCreditUrl ? (
+            <a
+              href={place.imageCreditUrl}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="hover:underline"
+            >
+              {t(locale, "사진", "Photo")}: {place.imageCredit}
+            </a>
+          ) : (
+            <>
+              {t(locale, "사진", "Photo")}: {place.imageCredit}
+            </>
+          )}
+        </p>
+      )}
       <div className="space-y-4 pt-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{name}</h1>

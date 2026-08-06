@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { CATEGORY_META } from "@/lib/constants";
 import { t } from "@/lib/i18n";
@@ -41,17 +42,35 @@ export function ItemCard({
           "relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] transition-shadow duration-300 group-hover:shadow-[0_18px_34px_rgba(0,0,0,0.12)]",
           selected && "ring-2 ring-primary ring-offset-2",
         )}
-        style={{
-          background: `linear-gradient(140deg, ${meta.color}26, ${meta.color}0d)`,
-        }}
+        style={
+          place.image
+            ? undefined
+            : { background: `linear-gradient(140deg, ${meta.color}26, ${meta.color}0d)` }
+        }
       >
-        <motion.div
-          whileHover={{ scale: 1.04 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex h-full items-center justify-center text-6xl"
-        >
-          <span aria-hidden>{meta.icon}</span>
-        </motion.div>
+        {place.image ? (
+          <motion.div
+            whileHover={{ scale: 1.04 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="relative h-full w-full"
+          >
+            <Image
+              src={place.image}
+              alt={name}
+              fill
+              sizes="(min-width: 1024px) 25vw, 45vw"
+              className="object-cover"
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            whileHover={{ scale: 1.04 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="flex h-full items-center justify-center text-6xl"
+          >
+            <span aria-hidden>{meta.icon}</span>
+          </motion.div>
+        )}
         {!onClick && (
           <FavoriteButton id={place.id} className="absolute right-3 top-3" />
         )}

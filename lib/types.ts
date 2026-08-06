@@ -43,6 +43,8 @@ export interface Place {
   description?: string;
   descriptionEn?: string;
   image?: string;
+  imageCredit?: string;
+  imageCreditUrl?: string;
   tags?: string[];
   openHours?: string;
   openHoursEn?: string;
@@ -67,7 +69,9 @@ export interface Festival {
   placeId: string;
   title: string;
   titleEn?: string;
-  poster: string;
+  poster?: string;
+  posterCredit?: string;
+  posterCreditUrl?: string;
   period: string;
   schedule: FestivalScheduleItem[];
   venue: string;
