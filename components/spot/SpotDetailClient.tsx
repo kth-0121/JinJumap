@@ -20,7 +20,7 @@ export function SpotDetailClient({
   const locale = useLocaleStore((s) => s.locale);
 
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10 sm:py-14">
+    <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-10 sm:py-14">
       <DetailHeader place={place} />
 
       <section className="mt-10">

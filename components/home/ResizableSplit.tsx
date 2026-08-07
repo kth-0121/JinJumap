@@ -58,6 +58,12 @@ export function ResizableSplit({
             isResizing && "bg-foreground/40",
           )}
         />
+        <div
+          className={cn(
+            "absolute left-1/2 top-1/2 h-10 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-border transition-colors group-hover:bg-foreground/50",
+            isResizing && "bg-foreground/50",
+          )}
+        />
       </div>
       <div style={{ width: `${100 - leftPercent}%` }} className="min-w-0">
         {right}

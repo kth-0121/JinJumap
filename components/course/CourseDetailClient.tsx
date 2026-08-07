@@ -30,7 +30,7 @@ export function CourseDetailClient({
     : undefined;
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
+    <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-10 sm:py-14">
       <header className="mb-8 space-y-2">
         <span className="inline-flex rounded-full bg-secondary px-2.5 py-1 text-xs font-medium">
           {t(
@@ -54,7 +54,7 @@ export function CourseDetailClient({
       </header>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_1fr]">
-        <div className="h-[420px] overflow-hidden rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
+        <div className="h-[420px] overflow-hidden rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] lg:h-[520px]">
           <MapView route={route} />
         </div>
         <div className="rounded-3xl bg-secondary/40 p-5">

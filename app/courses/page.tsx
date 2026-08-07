@@ -19,7 +19,7 @@ export default function CoursesPage() {
     theme === "전체" ? courses : courses.filter((c) => c.theme === theme);
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10 sm:py-14">
+    <main className="mx-auto w-full max-w-[1600px] flex-1 px-6 py-10 sm:py-14 lg:px-10">
       <header className="mb-8 space-y-2">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           {t(locale, "여행 코스", "Travel Courses")}
@@ -57,7 +57,7 @@ export default function CoursesPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
         {filtered.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}

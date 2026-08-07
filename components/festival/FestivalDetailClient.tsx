@@ -22,7 +22,7 @@ export function FestivalDetailClient({
   const venueName = t(locale, festival.venue, festival.venueEn ?? festival.venue);
 
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10 sm:py-14">
+    <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-10 sm:py-14">
       <header>
         <div className="relative flex h-64 items-center justify-center overflow-hidden rounded-3xl bg-violet-100 text-8xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] sm:h-80">
           {festival.poster ? (
