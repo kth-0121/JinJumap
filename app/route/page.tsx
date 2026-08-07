@@ -97,12 +97,12 @@ export default function RoutePlannerPage() {
       <main className="flex-1">
         <ResizableSplit
           left={
-            <div className="h-[calc(100vh-61px)] overflow-y-auto px-8 py-8">
+            <div className="h-[calc(100vh-var(--header-h))] overflow-y-auto px-8 py-8">
               {listContent}
             </div>
           }
           right={
-            <div className="h-[calc(100vh-61px)] overflow-hidden">
+            <div className="h-[calc(100vh-var(--header-h))] overflow-hidden">
               {route ? <MapView route={route} /> : <MapView places={START_OPTIONS} />}
             </div>
           }
@@ -113,7 +113,7 @@ export default function RoutePlannerPage() {
 
   return (
     <div className="relative flex-1">
-      <div className="fixed inset-x-0 bottom-0 top-[61px]">
+      <div className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-0">
         {route ? <MapView route={route} /> : <MapView places={START_OPTIONS} />}
       </div>
       <MapBottomSheet>{listContent}</MapBottomSheet>

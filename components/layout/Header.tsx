@@ -4,6 +4,7 @@ import Link from "next/link";
 import { t } from "@/lib/i18n";
 import { useLocaleStore } from "@/store/useLocaleStore";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { MobileNavMenu } from "./MobileNavMenu";
 
 export function Header() {
   const locale = useLocaleStore((s) => s.locale);
@@ -24,7 +25,7 @@ export function Header() {
         <Link href="/" className="shrink-0 text-lg font-bold tracking-tight">
           {t(locale, "한눈에 보는 진주", "Jinju at a Glance")}
         </Link>
-        <nav className="no-scrollbar flex gap-4 overflow-x-auto text-sm font-medium whitespace-nowrap text-muted-foreground">
+        <nav className="no-scrollbar hidden flex-1 gap-4 overflow-x-auto text-sm font-medium whitespace-nowrap text-muted-foreground lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -35,7 +36,10 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <LanguageSwitcher />
+        <div className="flex shrink-0 items-center gap-1">
+          <LanguageSwitcher />
+          <MobileNavMenu links={navLinks} />
+        </div>
       </div>
     </header>
   );

@@ -72,12 +72,14 @@ export function MapBottomSheet({
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
-        className="flex shrink-0 touch-none flex-col items-center gap-3 pb-2 pt-2.5 active:cursor-grabbing"
+        className="flex shrink-0 touch-none flex-col items-center gap-3 pb-3 pt-4 active:cursor-grabbing"
       >
         <span className="h-1.5 w-10 rounded-full bg-muted-foreground/30" />
         {header && <div className="w-full px-5">{header}</div>}
       </div>
-      <div className="flex-1 overflow-y-auto px-5 pb-10">{children}</div>
+      <div className="flex-1 overflow-y-auto px-5 pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
+        {children}
+      </div>
     </motion.div>
   );
 }

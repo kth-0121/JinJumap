@@ -31,7 +31,7 @@ export function FavoriteButton({
         toggleFavorite(id);
       }}
       className={cn(
-        "flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-base shadow-sm transition-transform hover:scale-110",
+        "flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-base shadow-sm transition-transform hover:scale-110 active:scale-95",
         className,
       )}
     >
