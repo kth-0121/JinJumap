@@ -198,6 +198,9 @@
     "address": "진주성 일원",
     "description": "국내 최초의 종합예술제로 다양한 공연과 전시가 열린다.",
     "descriptionEn": "Korea's first comprehensive arts festival, featuring a wide range of performances and exhibitions.",
+    "image": "/images/gaecheon-festival.jpg",
+    "imageCredit": "Kang Byeong Kee (CC BY 3.0, Wikimedia Commons)",
+    "imageCreditUrl": "https://commons.wikimedia.org/wiki/File:Gaechung-ArtFestival-memorialMonument.jpg",
     "tags": ["예술제", "공연"],
     "rating": 4.4,
     "festivalId": "gaecheon-festival"
@@ -357,6 +360,9 @@
     "address": "경상남도 진주시 내동면 일대",
     "description": "1970년 남강댐 건설로 만들어진 인공호수로, 드라이브 코스와 일몰 명소로 알려져 있다.",
     "descriptionEn": "An artificial lake created by the Namgang Dam in 1970, popular for its scenic drive loop and sunset views.",
+    "image": "/images/jinyangho.jpg",
+    "imageCredit": "Seongbin Im (CC BY-SA 2.0, Wikimedia Commons)",
+    "imageCreditUrl": "https://commons.wikimedia.org/wiki/File:Jinyangho_(%EC%A7%84%EC%96%91%ED%98%B8).jpg",
     "tags": ["호수", "드라이브", "일몰"],
     "rating": 4.5
   },
@@ -370,6 +376,9 @@
     "address": "경상남도 진주시 금산면 월아산로1440번길 138",
     "description": "월아산에 자리한 879년 창건 사찰로, 국보급 불화와 보물급 목조상을 보유하고 있다.",
     "descriptionEn": "A Buddhist temple founded in 879 on Mt. Wolasan, home to a National Treasure Buddhist painting and Treasure-designated wooden statues.",
+    "image": "/images/cheonggoksa.jpg",
+    "imageCredit": "Grampus (CC BY-SA 3.0, Wikimedia Commons)",
+    "imageCreditUrl": "https://commons.wikimedia.org/wiki/File:Cheonggoksa_Daeungjeon_01.JPG",
     "tags": ["사찰", "역사", "월아산"],
     "rating": 4.4
   },
@@ -422,6 +431,9 @@
     "address": "경상남도 진주시 영천강로68번길 22",
     "description": "약 1억 년 전 익룡 발자국 화석이 발견된 천연기념물 현장에 세운 전시관.",
     "descriptionEn": "An exhibition hall built at the site of a natural-monument fossil trackway that includes the world's largest known pterosaur footprint, dated to roughly 100 million years ago.",
+    "image": "/images/pterosaur-hall.jpg",
+    "imageCredit": "Dittwjfsdgkvkdjg (CC BY-SA 3.0, Wikimedia Commons)",
+    "imageCreditUrl": "https://commons.wikimedia.org/wiki/File:%EC%A7%84%EC%A3%BC%EC%9D%B5%EB%A3%A17.jpg",
     "tags": ["화석", "박물관", "천연기념물"],
     "rating": 4.3
   },

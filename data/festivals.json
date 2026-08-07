@@ -44,6 +44,9 @@
     "placeId": "gaecheon-festival-venue",
     "title": "진주개천예술제",
     "titleEn": "Jinju Gaecheon Art Festival",
+    "poster": "/images/gaecheon-festival.jpg",
+    "posterCredit": "Kang Byeong Kee (CC BY 3.0, Wikimedia Commons)",
+    "posterCreditUrl": "https://commons.wikimedia.org/wiki/File:Gaechung-ArtFestival-memorialMonument.jpg",
     "period": "2026-10-03 ~ 2026-10-07",
     "schedule": [
       {
